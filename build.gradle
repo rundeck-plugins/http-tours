@@ -1,0 +1,42 @@
+version = '0.1.0'
+defaultTasks 'clean','build'
+apply plugin: 'java'
+apply plugin: 'groovy'
+apply plugin: 'idea'
+sourceCompatibility = 1.8
+ext.rundeckPluginVersion= '2.0'
+ext.rundeckVersion= '3.0.x'
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.rundeck:rundeck-core:3.0.9-SNAPSHOT'
+    compile "org.slf4j:slf4j-api:1.7.25"
+
+    testCompile "com.squareup.okhttp3:mockwebserver:3.9.1"
+    testCompile 'junit:junit:4.12'
+    testCompile "org.codehaus.groovy:groovy-all:2.4.15"
+    testCompile "org.spockframework:spock-core:1.0-groovy-2.4"
+    testRuntime "org.slf4j:slf4j-simple:1.7.25"
+}
+
+ext.pluginClassNames='com.plugin.httptours.HttpTours'
+jar {
+    manifest {
+        attributes 'Rundeck-Plugin-Classnames': pluginClassNames
+        attributes 'Rundeck-Plugin-File-Version': version
+        attributes 'Rundeck-Plugin-Name': 'HttpTours'
+        attributes 'Rundeck-Plugin-Description': 'Loads Tours from an http endpoint'
+        attributes 'Rundeck-Plugin-Rundeck-Compatibility-Version': '3.x'
+        attributes 'Rundeck-Plugin-Tags': 'java,tour loader'
+        attributes 'Rundeck-Plugin-Version': rundeckPluginVersion, 'Rundeck-Plugin-Archive': 'true'
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.4.1'
+}
