@@ -37,28 +37,6 @@ public class HttpTours implements TourLoaderPlugin {
     @PluginProperty(name="toursSubpath",title="Tours Sub Path",description = "The sub path in which all tours are located. The url format to access tours will be $tourEndpoint/$toursSubpath/$tourKey",defaultValue = "tours")
     String toursSubpath = null;
 
-    String loaderName = null;
-
-    @Override
-    public String getLoaderName() {
-        if(loaderName == null) populateLoaderName();
-        return loaderName;
-    }
-
-    private void populateLoaderName() {
-        try {
-            Map manifest = getTourManifest();
-            if(manifest.containsKey("name")) {
-                Object customName = getTourManifest().get("name");
-                if(customName != null) loaderName = customName.toString();
-            }
-            return;
-        } catch(Exception ex) {
-            LOG.error("Couldn't set loader name", ex);
-        }
-        loaderName = "Http Tours";
-    }
-
     @Override
     public Map getTourManifest() {
         Response response = null;
