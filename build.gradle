@@ -10,11 +10,12 @@ ext.rundeckVersion= '3.0.x'
 
 repositories {
     mavenLocal()
+    jcenter()
     mavenCentral()
 }
 
 dependencies {
-    compile 'org.rundeck:rundeck-core:3.0.9-SNAPSHOT'
+    compile 'org.rundeck:rundeck-core:3.0.9-20181127'
     compile "org.slf4j:slf4j-api:1.7.25"
 
     testCompile "com.squareup.okhttp3:mockwebserver:3.9.1"
@@ -31,7 +32,7 @@ jar {
         attributes 'Rundeck-Plugin-File-Version': version
         attributes 'Rundeck-Plugin-Name': 'HttpTours'
         attributes 'Rundeck-Plugin-Description': 'Loads Tours from an http endpoint'
-        attributes 'Rundeck-Plugin-Rundeck-Compatibility-Version': '3.x'
+        attributes 'Rundeck-Plugin-Rundeck-Compatibility-Version': '3.0.9+'
         attributes 'Rundeck-Plugin-Tags': 'java,tour loader'
         attributes 'Rundeck-Plugin-Version': rundeckPluginVersion, 'Rundeck-Plugin-Archive': 'true'
     }
