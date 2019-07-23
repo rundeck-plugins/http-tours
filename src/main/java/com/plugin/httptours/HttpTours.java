@@ -39,6 +39,10 @@ public class HttpTours implements TourLoaderPlugin {
 
     @Override
     public Map getTourManifest() {
+        if(tourEndpoint == null) {
+            LOG.info("HttpTours requires a tourEndpoint property to be configured");
+            return new TreeMap();
+        }
         Response response = null;
         try {
             String tourManifestUrl = constructTourManifestUrl();

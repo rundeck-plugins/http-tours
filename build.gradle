@@ -1,4 +1,29 @@
-version = '0.1.0'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+plugins {
+    id 'pl.allegro.tech.build.axion-release' version '1.7.0'
+}
+
+scmVersion {
+    ignoreUncommittedChanges = true
+    tag {
+        prefix = ''
+        versionSeparator = ''
+        def origDeserialize=deserialize
+        //append .0 to satisfy semver if the tag version is only X.Y
+        deserialize = { config, position, tagName ->
+            def orig = origDeserialize(config, position, tagName)
+            if (orig.split('\\.').length < 3) {
+                orig += ".0"
+            }
+            orig
+        }
+    }
+}
+
 defaultTasks 'clean','build'
 apply plugin: 'java'
 apply plugin: 'groovy'
@@ -6,7 +31,7 @@ apply plugin: 'idea'
 sourceCompatibility = 1.8
 ext.rundeckPluginVersion= '2.0'
 ext.rundeckVersion= '3.0.x'
-
+project.version = scmVersion.version
 
 repositories {
     mavenLocal()
@@ -29,9 +54,9 @@ ext.pluginClassNames='com.plugin.httptours.HttpTours'
 jar {
     manifest {
         attributes 'Rundeck-Plugin-Classnames': pluginClassNames
-        attributes 'Rundeck-Plugin-File-Version': version
+        attributes 'Rundeck-Plugin-File-Version': project.version
         attributes 'Rundeck-Plugin-Name': 'HttpTours'
-        attributes 'Rundeck-Plugin-Description': 'Loads Tours from an http endpoint'
+        attributes 'Rundeck-Plugin-Description': 'Loads Tours from an Http endpoint'
         attributes 'Rundeck-Plugin-Rundeck-Compatibility-Version': '3.0.9+'
         attributes 'Rundeck-Plugin-Tags': 'java,tour loader'
         attributes 'Rundeck-Plugin-Version': rundeckPluginVersion, 'Rundeck-Plugin-Archive': 'true'

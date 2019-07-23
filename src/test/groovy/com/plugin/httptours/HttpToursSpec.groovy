@@ -1,5 +1,6 @@
 package com.plugin.httptours
 
+import okhttp3.internal.http.HttpMethod
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.RecordedRequest
@@ -41,6 +42,14 @@ class HttpToursSpec extends Specification {
         tour
         rrq.path == "/tours/tour1.json"
         rrq.getHeader("User-Agent") == "httptours/unk (na)"
+    }
+
+    def "Require tourEndpoint to be set"() {
+        when:
+        HttpTours httpTours = new HttpTours()
+
+        then:
+        httpTours.getTourManifest().isEmpty()
     }
 
 }
