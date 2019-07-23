@@ -13,6 +13,7 @@ import okhttp3.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -20,7 +21,10 @@ import java.util.TreeMap;
 @PluginDescription(title="Http Tours", description="Load Tours from an http source")
 public class HttpTours implements TourLoaderPlugin {
     Logger LOG = LoggerFactory.getLogger(HttpTours.class);
-
+    private static final HashMap<String,Object> EMPTY_MANIFEST = new HashMap<>();
+    static {
+        EMPTY_MANIFEST.put("tours",new HashMap());
+    }
 
     private static final ObjectMapper mapper = new ObjectMapper();
     static  {
@@ -41,7 +45,7 @@ public class HttpTours implements TourLoaderPlugin {
     public Map getTourManifest() {
         if(tourEndpoint == null) {
             LOG.info("HttpTours requires a tourEndpoint property to be configured");
-            return new TreeMap();
+            return EMPTY_MANIFEST;
         }
         Response response = null;
         try {
@@ -61,7 +65,7 @@ public class HttpTours implements TourLoaderPlugin {
         } finally {
             if(response != null) response.body().close();
         }
-        return new TreeMap();
+        return EMPTY_MANIFEST;
     }
 
     private String constructTourManifestUrl() {

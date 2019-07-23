@@ -49,7 +49,7 @@ class HttpToursSpec extends Specification {
         HttpTours httpTours = new HttpTours()
 
         then:
-        httpTours.getTourManifest().isEmpty()
+        httpTours.getTourManifest().tours.isEmpty()
     }
 
 }
