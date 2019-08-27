@@ -1,0 +1,43 @@
+{
+  "name": "Getting Started",
+  "key": "getting-started",
+  "steps": [
+    {
+      "title": "Welcome!",
+      "content": "<!--\n-->\n<p>\nWelcome to this Guided Tour. If you are a new user, follow this guided tour to get acquainted to navigating and getting started.\n</p>\n<h6>Next: Navigation</h6>\n",
+      "nextStepUrl": "menu/home"
+    },
+    {
+      "title": "Navigation",
+      "content": "<!--\n-->\n<p>\nRundeck navigation is done using the project navigation bar on the left side of the page or from menus under icons in the page header. \n</p>\n<figure>\n  <img src=\"https://rundeck.org/docs/figures/fig0201.png\" alt=\"Sidebar and header navigation\" class=\"thumbnail\">\n</figure>\n<h6>Next: Role-Based Access</h6>\n",
+      "stepIndicator": "mainbar",
+      "nextStepUrl": "menu/acls"
+    },
+    {
+      "title": "Role based access",
+      "content": "<!--\n-->\n<p>\nEverything you see after logging into Rundeck is based on the <i>access control policy</i> (ACL) defined by the administator. \nResources that are governed by ACLs include access to System wide or Project resources.\n</p>\n<p>\nThe Rundeck graphical interface is also driven by the ACL and displays resources and actions that were explicitly granted. \n</p>\n<p>\nACL rules apply to your login or group memberships. You can see the groups you belong to by checking the <a href=\"/user/profile\">User Profile</a> page.\n</p>\n<p>Manual: <a href=\"https://rundeck.org/docs/administration/security/access-control-policy.html\" target=\"_blank\">Access Control Policy</a>.\n</p>\n<h6>Next: User Menu</h6>\n",
+      "nextStepUrl": "user/profile"
+    },
+    {
+      "title": "User menu",
+      "content": "<!--\n-->\n<p>\nThe User menu lets you logout and view your profile page. Your user profile lists your group memberships and a form to list and generate API tokens.\n</p>\n<p>\nSee <a href=\"https://rundeck.org/docs/manual/user.html\" target=\"_blank\">User</a>\n</p>\n<h6>Next: System Menu</h6>\n",
+      "stepIndicator": "appUser",
+      "nextStepUrl": "menu/systemInfo"
+    },
+    {
+      "title": "System menu",
+      "content": "<!--\n-->\n<p>\nThe system menu contains access to: Key Storage, ACLs, System Info, Plugins, and other system controls.\n</p>\n<p>\nIf your login belongs to the â€œadminâ€ group and therefore granted â€œadminâ€ privileges, you can also access, System Configuration, Access Control, System Report, Log Storage, List Plugins, Password Utility and Execution mode.\n</p>\n<p>\nSee <a href=\"https://rundeck.org/docs/manual/configure.html\" target=\"_blank\">Configure</a>\n</p>\n<h6>Next: Project Menu</h6>\n",
+      "stepIndicator": "appAdmin"
+    },
+    {
+      "title": "Project menu",
+      "content": "<!--\n-->\n<p>\nThe left navigation bar lets you choose a project. Once inside a project you can switch to the projectâ€™s Dashboard, Jobs, Nodes, Commands and Activity pages. Project administrators will also be able to access the Project Settings pages.\n</p>\n<h6>Next: Projects</h6>\n",
+      "stepIndicator": "projectSelect",
+      "nextStepUrl": "menu/home"
+    },
+    {
+      "title": "Projects",
+      "content": "<!--\n-->\n<p>\nA <i>Project</i> organizes and separates the activities you manage with Rundeck. Multiple projects can be maintained on the same Rundeck server and often correspond to a kind of work or group of users.\n</p>\n<h6>The End</h6>\n"
+    }
+  ]
+}

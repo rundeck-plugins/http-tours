@@ -1,0 +1,9 @@
+{
+    "name": "Example Tours",
+    "tours": [
+        {
+            "key": "getting-started",
+            "name": "Getting Started"
+        }
+    ]
+}
